@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>বাংলা-English Aligner | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Easy-to-use tool to make and visualize word alignments">
+    <meta name="keywords" content="word alignment, visualise, tool, online, machine translation, mt, alignment">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57"
+        href="https://users.ugent.be/~bmvroy/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="https://users.ugent.be/~bmvroy/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="https://users.ugent.be/~bmvroy/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="https://users.ugent.be/~bmvroy/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120"
+        href="https://users.ugent.be/~bmvroy/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152"
+        href="https://users.ugent.be/~bmvroy/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" sizes="196x196" href="https://users.ugent.be/~bmvroy/favicon-196x196.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://users.ugent.be/~bmvroy/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://users.ugent.be/~bmvroy/favicon-16x16.png">
+    <meta name="application-name" content="Bram Vanroy | PhD Researcher in NLP">
+    <meta name="msapplication-TileColor" content="#f0f0f0">
+    <meta name="msapplication-TileImage" content="https://users.ugent.be/~bmvroy/mstile-144x144.png">
+
+    <meta name="author" content="Bram Vanroy">
+    <link rel="home prerender prefetch" href="https://users.ugent.be/~bmvroy">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script>
+        const drawer = document.createElement("script");
+        drawer.src = "js/draw.js";
+        WebFont.load({
+            google: {
+                families: ["Varela Round"]
+            },
+            classes: false,
+            active: () => document.body.appendChild(drawer),
+            inactive: () => document.body.appendChild(drawer),
+        })
+    </script>
+    <link href="css/styles.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Word alignment <br> (বাংলা - English)</h1>
+    </header>
+
+    <main>
+        <section id="options">
+            <form>
+                <div>
+                    <label><span>Bangla Text:</span><input type="text" name="source" value="আমি ভাত খাই"
+                            placeholder="This is a source sentence" required></label>
+                    <label><span>English Text:</span><input type="text" name="target" value="I eat rice"
+                            placeholder="This is a target sentence" required></label>
+                    <label><span>Alignments:</span><input type="text" name="aligns" value="0-0 1-2 2-1"
+                            placeholder=""></label>
+                </div>
+                <div>
+                    <input id="convert" type="submit" onclick="" value="Refresh">
+                    <input type="submit" onclick="fetchInputs()" value="Fetch">
+                    <input type="submit" onclick="storeAligns()" value="Store">
+                    <input download="aligns.txt" type="submit" onclick="saveAsText()" value="Download">
+                </div>
+            </form>
+        </section>
+
+        <aside id="error">
+        </aside>
+        <section id="app">
+            <div id="source" class="sentence"></div>
+            <div id="alignments"></div>
+            <div id="target" class="sentence">
+            </div>
+        </section>
+        <aside id="guidelines">
+            <p>
+            </p>
+            <h3>Guidelines for Better Performance</h3>
+            <ol>
+                <li>
+                    The given texts are placeholders. (Not real data)
+                </li>
+                <li>
+                    Clear the <strong>Alignments</strong> field before starting.
+                </li>
+                <li>
+                    Click on the <strong>Refresh</strong> button to clear the previous alignment mapping.
+                </li>
+                <li>
+                    Click the <strong>Fetch</strong> button to get the new data in the input fields.
+                </li>
+                <li>
+                    Click the <strong>Store</strong> button to store the alignments.
+                </li>
+                <li>
+                    Check the browser <strong>Alert</strong> to how many alignments are stored. Then click
+                    <strong>OK</strong> in Alert to continue.
+                </li>
+                <li>
+                    Don't Click the <strong>Store</strong> button more than one. Otherwise multiple alignments will be
+                    stored.
+                <li>
+                    Repeat <strong>2-7 Steps</strong> every time.
+                </li>
+                <li>
+                    Click the <strong>Download</strong> button to download the alignments as text file.
+                </li>
+                <li>
+                    To <strong>add</strong> an alignment link, click on a word and then click on the other word you wish
+                    to align it with.
+                </li>
+                <li>
+                    To <strong>remove</strong> an alignment link, click on a word and its aligned word.
+                </li>
+                <li>
+                    In both cases, the visualisation and the input field will change accordingly.
+                </li>
+
+            </ol>
+        </aside>
+    </main>
+
+    <footer>
+        Last updated on
+        <time datetime="2022-30-03T16:59:20+02:00">30 March, 2022</time> &copy; <a rel="home" href="" target="_blank"
+            title="My homepage">Md. Musfiqur Rahaman</a>
+    </footer>
+
+    <!-- <script src="js/converter.js"></script> -->
+</body>
+
+</html>
