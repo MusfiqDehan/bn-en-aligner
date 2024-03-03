@@ -58,12 +58,15 @@
         <section id="options">
             <form>
                 <div>
-                    <label><span>Bangla Text:</span><input type="text" name="source" value="আমি ভাত খাই"
-                            placeholder="This is a source sentence" required></label>
-                    <label><span>English Text:</span><input type="text" name="target" value="I eat rice"
-                            placeholder="This is a target sentence" required></label>
-                    <label><span>Alignments:</span><input type="text" name="aligns" value="0-0 1-2 2-1"
-                            placeholder=""></label>
+                    <label><span>Bangla Text:</span><input id="source" type="text" name="source" value="আমি ভাত খাই"
+                            placeholder="This is a source sentence" required>
+                        <span class="copy-icon" onclick="copyToClipboard('source')">📋</span></label>
+                    <label><span>English Text:</span><input id="target" type="text" name="target" value="I eat rice"
+                            placeholder="This is a target sentence" required>
+                        <span class="copy-icon" onclick="copyToClipboard('target')">📋</span></label>
+                    <label><span>Alignments:</span><input id="aligns" type="text" name="aligns" value="0-0 1-2 2-1"
+                            placeholder="">
+                        <span class="copy-icon" onclick="copyToClipboard('aligns')">📋</span></label>
                 </div>
                 <div>
                     <input id="convert" type="submit" onclick="" value="Refresh">
