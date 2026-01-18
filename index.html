@@ -39,14 +39,23 @@
     <script>
         const drawer = document.createElement("script");
         drawer.src = "js/draw.js";
-        WebFont.load({
-            google: {
-                families: ["Varela Round"]
-            },
-            classes: false,
-            active: () => document.body.appendChild(drawer),
-            inactive: () => document.body.appendChild(drawer),
-        })
+        
+        // Load drawer script regardless of WebFont status
+        if (typeof WebFont !== 'undefined') {
+            WebFont.load({
+                google: {
+                    families: ["Varela Round"]
+                },
+                classes: false,
+                active: () => document.body.appendChild(drawer),
+                inactive: () => document.body.appendChild(drawer),
+            });
+        } else {
+            // Fallback: load drawer directly if WebFont is not available
+            document.addEventListener('DOMContentLoaded', () => {
+                document.body.appendChild(drawer);
+            });
+        }
     </script>
     <link href="css/styles.css" rel="stylesheet">
 </head>
