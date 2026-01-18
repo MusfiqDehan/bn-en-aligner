@@ -375,9 +375,9 @@ app.addEventListener("mouseleave", (evt) => {
 });
 
 // Trigger submit for the first load
-const submitButton = form.querySelector('button[type=submit]') || form.querySelector('input[type=submit]');
-if (submitButton) {
-    submitButton.click();
+const refreshButton = form.querySelector('button#convert') || form.querySelector('button[type=submit]') || form.querySelector('input[type=submit]');
+if (refreshButton) {
+    refreshButton.click();
 }
 
 /* ALIGNER */
