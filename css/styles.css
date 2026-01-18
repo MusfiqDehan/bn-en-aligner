@@ -1,5 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
 
+/* Theme Variables */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #3b3e4d;
+    --text-secondary: #6b7280;
+    --accent-color: #80d1ac;
+    --accent-hover: #3ead7a;
+    --border-color: #ebebeb;
+    --error-bg: #fccdcd;
+    --error-border: #eabfbf;
+    --input-bg: #ffffff;
+    --header-border: #3b3e4d;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --text-primary: #e4e4e7;
+    --text-secondary: #a1a1aa;
+    --accent-color: #80d1ac;
+    --accent-hover: #a8dcc4;
+    --border-color: #374151;
+    --error-bg: #7f1d1d;
+    --error-border: #991b1b;
+    --input-bg: #0f172a;
+    --header-border: #80d1ac;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
     line-height: 1.15;
@@ -200,16 +231,16 @@ template {
     fill: #80d1ac;
 }
 ::-moz-selection {
-    background: #80d1ac;
+    background: var(--accent-color);
     color: white;
 }
 ::selection {
-    background: #80d1ac;
+    background: var(--accent-color);
     color: white;
 }
 body {
-    color: #3b3e4d;
-    background: white;
+    color: var(--text-primary);
+    background: var(--bg-primary);
     font-family: "Hind Siliguri", sans-serif;
     font-weight: 400;
     font-size: 24px;
@@ -221,11 +252,13 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 body::before {
     height: 4px;
-    background-color: #3b3e4d;
+    background-color: var(--header-border);
     content: "";
+    transition: background-color 0.3s ease;
 }
 main {
     -webkit-box-flex: 1;
@@ -233,42 +266,42 @@ main {
     flex: 1;
 }
 input {
-    background: white;
-    color: #3b3e4d;
+    background: var(--input-bg);
+    color: var(--text-primary);
     border-radius: 0.48em;
     padding: 0.56em 0.72em;
-    border: 4px solid #ebebeb;
+    border: 4px solid var(--border-color);
     outline: 0;
-    -webkit-transition: -webkit-transform 200ms;
-    transition: -webkit-transform 200ms;
-    transition: transform 200ms;
-    transition: transform 200ms, -webkit-transform 200ms;
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 input:active,
 input:focus {
-    border-color: #a5dfc4;
+    border-color: var(--accent-color);
     -webkit-transform: scale(1.02);
     transform: scale(1.02);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 input[type="submit"] {
     padding: 0.6em 0.4em;
     text-align: center;
     cursor: pointer;
     color: white;
-    background: #a8dcc4;
+    background: var(--accent-color);
     border: 0 none;
     font-weight: bold;
-    -webkit-transition: -webkit-transform 200ms;
-    transition: -webkit-transform 200ms;
-    transition: transform 200ms;
-    transition: transform 200ms, -webkit-transform 200ms;
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
 }
 input[type="submit"]:hover {
-    background: #80d1ac;
+    background: var(--accent-hover);
+    box-shadow: 0 6px 16px var(--shadow-color);
+    transform: translateY(-2px);
 }
 input[type="submit"]:active {
-    -webkit-transform: scale(0.9);
-    transform: scale(0.9);
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
 }
 header,
 #options {
@@ -278,19 +311,21 @@ header,
 }
 a:link,
 a:visited {
-    color: #80d1ac;
+    color: var(--accent-hover);
+    transition: all 0.2s ease;
 }
 a:active {
-    color: #44bb85;
+    color: var(--accent-color);
 }
 a,
 #options form label span {
-    border-bottom: 4px solid #f5f5f5;
+    border-bottom: 4px solid var(--bg-secondary);
     text-decoration: none;
+    transition: border-bottom-color 0.2s ease;
 }
 a:hover,
 #options form label:hover span {
-    border-bottom-color: #80d1ac;
+    border-bottom-color: var(--accent-color);
 }
 #options {
     font-size: 0.78em;
@@ -341,12 +376,14 @@ a:hover,
     width: 90%;
     margin: 1em auto;
     font-size: 0.78em;
-    background: #fccdcd;
+    background: var(--error-bg);
     padding: 0.48em 1em;
     border-radius: 12px;
-    -webkit-box-shadow: 0 0 24px rgba(0, 0, 0, 0.16);
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.16);
-    border-bottom: 2px solid #eabfbf;
+    -webkit-box-shadow: 0 0 24px var(--shadow-color);
+    box-shadow: 0 0 24px var(--shadow-color);
+    border-bottom: 2px solid var(--error-border);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
 }
 #app {
     position: relative;
@@ -372,11 +409,11 @@ a:hover,
 }
 #app .sentence .word.highlight:not(.alignable),
 #app .sentence .word:hover {
-    color: #3ead7a;
+    color: var(--accent-hover);
 }
 #app .sentence .word.alignable {
     position: relative;
-    border: 1px dashed #3ead7a;
+    border: 1px dashed var(--accent-hover);
 }
 #app .sentence .word.alignable::before {
     content: "+";
@@ -385,7 +422,7 @@ a:hover,
     left: 0;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background: #3ead7a;
+    background: var(--accent-hover);
     font-size: 12px;
     border-radius: 36px;
     width: 16px;
@@ -407,11 +444,12 @@ a:hover,
     margin: auto;
 }
 #alignments svg line {
-    stroke: black;
+    stroke: var(--text-primary);
     stroke-width: 2px;
+    transition: stroke 0.3s ease;
 }
 #alignments svg line.highlight {
-    stroke: #3ead7a;
+    stroke: var(--accent-hover);
 }
 #guidelines {
     max-width: 640px;
@@ -419,10 +457,12 @@ a:hover,
     font-size: 0.64em;
     margin: 2em auto 0;
     line-height: 1.6;
-    background: #f5f5f5;
+    background: var(--bg-secondary);
     border-radius: 0.48em;
     padding: 0.56em 0.72em;
-    color: black;
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: all 0.3s ease;
 }
 #guidelines p {
     margin: 0;
@@ -431,6 +471,94 @@ footer {
     font-size: 0.64em;
     padding: 1em 0;
     text-align: center;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 1.5em;
+    right: 2em;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    background: var(--accent-hover);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+    display: block;
+}
+
+.theme-toggle .moon-icon {
+    display: none;
+}
+
+body.dark-theme .theme-toggle .sun-icon {
+    display: none;
+}
+
+body.dark-theme .theme-toggle .moon-icon {
+    display: block;
+}
+
+/* Text gradient for Bengali-English */
+.text-gradient {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Enhanced header styling */
+header {
+    position: relative;
+}
+
+header h1 {
+    text-align: center;
+    font-weight: 600;
+    padding: 0.5em 0;
+}
+
+/* Copy icon enhancement */
+.copy-icon {
+    cursor: pointer;
+    margin-left: 0.5em;
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.copy-icon:hover {
+    transform: scale(1.2);
+}
+
+.copy-icon:active {
+    transform: scale(0.9);
 }
 @media (max-width: 640px) {
     body {
@@ -466,6 +594,20 @@ footer {
     }
     #app {
         padding-top: 1em;
+    }
+    .theme-toggle {
+        top: 1em;
+        right: 1em;
+        width: 40px;
+        height: 40px;
+    }
+    .theme-toggle svg {
+        width: 20px;
+        height: 20px;
+    }
+    header h1 {
+        font-size: 1.5em;
+        padding-right: 3em;
     }
 }
 /*# sourceMappingURL=styles.min.css.map */
