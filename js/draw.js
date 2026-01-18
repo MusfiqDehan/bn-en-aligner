@@ -375,7 +375,10 @@ app.addEventListener("mouseleave", (evt) => {
 });
 
 // Trigger submit for the first load
-form.querySelector("input[type=submit]").click();
+const submitButton = form.querySelector('button[type=submit]') || form.querySelector('input[type=submit]');
+if (submitButton) {
+    submitButton.click();
+}
 
 /* ALIGNER */
 let sourceClicked = false;
