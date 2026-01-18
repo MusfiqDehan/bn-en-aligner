@@ -1,3 +1,35 @@
+// Theme Toggle Functionality
+(function() {
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+
+    // Wait for DOM to be ready
+    function initThemeToggle() {
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle('dark-theme');
+                
+                // Save theme preference
+                const theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
+            });
+        }
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemeToggle);
+    } else {
+        initThemeToggle();
+    }
+})();
+
 const app = document.querySelector("#app");
 const form = document.querySelector("form");
 const src_inp = form.querySelector("input[name=source]");
@@ -343,7 +375,10 @@ app.addEventListener("mouseleave", (evt) => {
 });
 
 // Trigger submit for the first load
-form.querySelector("input[type=submit]").click();
+const refreshButton = form.querySelector('button#convert') || form.querySelector('button[type=submit]') || form.querySelector('input[type=submit]');
+if (refreshButton) {
+    refreshButton.click();
+}
 
 /* ALIGNER */
 let sourceClicked = false;
