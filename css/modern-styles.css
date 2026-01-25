@@ -512,6 +512,8 @@ body.dark-theme .toggle-track .moon-icon {
     position: relative;
     padding: 2rem 0;
     text-align: center;
+    max-height: 600px;
+    overflow: auto;
 }
 
 #app .sentence {
